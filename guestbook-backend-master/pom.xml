@@ -21,7 +21,7 @@
 	<properties>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<maven.compiler.release>13</maven.compiler.release>
+		<maven.compiler.release>8</maven.compiler.release>
 		
     </properties>
 
@@ -29,7 +29,7 @@
 		<dependency>
 			<groupId>org.keycloak</groupId>
 			<artifactId>keycloak-spring-security-adapter</artifactId>
-			<version>8.0.2</version>
+			<version>9.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.keycloak</groupId>

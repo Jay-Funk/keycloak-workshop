@@ -17,8 +17,17 @@ public class GuestbookMailService {
 	public void sendMail(final GuestbookEntry entry) {
 
 		System.out.println("Sending Mail...");
-		mailClient.sendMail(entry);
-		System.out.println("Successfully sent Mail!");
+		try {
+			mailClient.sendMail(entry);
+			System.out.println("Successfully sent Mail!");
+
+		} catch (final Exception e) {
+			if (e.getLocalizedMessage().contains("403")) {
+				System.out.println("ERROR sending mail: Status 403 - FORBIDDEN");
+			} else {
+				System.out.println("ERROR sending mail: " + e.getLocalizedMessage());
+			}
+		}
 
 	}
 }
