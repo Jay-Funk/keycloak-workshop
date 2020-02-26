@@ -18,7 +18,7 @@ To get started clone this repo to your local filesystem.
 	* Enter credentials (user: **admin**, password: **codefusion**).
 2. Create a new _realm_ with the name **springboot-example**.\
 It's important to use this exact name because the applications are configured to use it to authenticate the user.
-3. Create a clients.
+3. Create the clients:
 	* For **guestbook-frontend-app** use:
 		- Access Type: `public`
 		- Valid Redirect URI: `http://localhost:8081/*`
@@ -26,7 +26,10 @@ It's important to use this exact name because the applications are configured to
 	* For **guestbook-backend-app** and **guestbook-mail-app** respectively, use:
 		- Access Type: `bearer-only`
 4. Create a new **_role_** called `user.
-5. Create new user and assign the role `user` in the **Role Mappings** tab.
+5. Create new user:
+	1. Add a new user from the _Users_ field
+	2. Set a passeord from the **credentials** tab and unselect `temporary`
+	3. Assign the role `user` in the **Role Mappings** tab.
 
 6. Test that everything is working by starting the frontend application
 	1. Go to **localhost:8081** in your browser to open the **_Frontend_** application.
