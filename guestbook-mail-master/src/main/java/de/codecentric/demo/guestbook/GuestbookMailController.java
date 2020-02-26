@@ -2,12 +2,12 @@ package de.codecentric.demo.guestbook;
 
 import java.security.Principal;
 
-import org.springframework.beans.factory.annotation.Autowired;
+// import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
+// import org.springframework.mail.MailSender;
+// import org.springframework.mail.SimpleMailMessage;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -35,9 +35,6 @@ public class GuestbookMailController {
 			consumes=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Boolean> sendMail(@RequestBody GuestbookEntry entry, Principal p) {
 		Boolean isSent = true;
-
-		System.out.println("Send email from " + from + " to " + to + ".");
-		System.out.println(entry.getCommenter() + " schrieb:\r\n\r\n" + entry.getComment() + "\r\n");
 		//Map<String, Object> customAttributes = ((KeycloakAuthenticationToken) p).getAccount().getKeycloakSecurityContext().getToken().getOtherClaims();
 		// SimpleMailMessage msg = new SimpleMailMessage();
 		// msg.setFrom(from);
@@ -52,6 +49,9 @@ public class GuestbookMailController {
 		// } catch (InterruptedException e) {
 		// 	e.printStackTrace();
 		// }
+
+		System.out.println("From: " + from + " to " + to + ".");
+		System.out.println(entry.getCommenter() + " schrieb:\r\n\r\n" + entry.getComment() + "\r\n");
 		
 		return ResponseEntity.ok().body(isSent);
 	}
