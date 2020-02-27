@@ -1,12 +1,13 @@
 package de.codecentric.demo.guestbook.infrastructure.thirdParty;
 
-import de.codecentric.demo.guestbook.domain.GuestbookEntry;
-import de.codecentric.demo.guestbook.domain.GuestbookMailClient;
 import org.keycloak.adapters.springsecurity.client.KeycloakRestTemplate;
 import org.springframework.stereotype.Component;
 
+import de.codecentric.demo.guestbook.domain.GuestbookEntry;
+import de.codecentric.demo.guestbook.domain.GuestbookMailClient;
+
 @Component
-public class SpringMailClient implements GuestbookMailClient {
+public class SpringMailClient implements GuestbookMailClient{
 
     private final KeycloakRestTemplate template;
 
@@ -15,10 +16,8 @@ public class SpringMailClient implements GuestbookMailClient {
     }
 
     @Override
-    public boolean sendMail(GuestbookEntry entry) {
+    public Boolean sendMail(GuestbookEntry entry) {
         String endpoint = "http://localhost:8082/mail";
-        Boolean result = template.postForObject(endpoint, entry, Boolean.class);
-        System.out.println("Mail sent: " + result.toString());
-        return result;
+        return template.postForObject(endpoint, entry, Boolean.class).booleanValue();
     }
 }

@@ -5,22 +5,31 @@ $(document).ready(function() {
         realm: 'springboot-example',
         clientId: 'guestbook-frontend-app',
     });
+    console.log("oinitializing keycloak...");
 
     keycloak.init({ onLoad: 'login-required'
     }).success(
         function(){
             console.log('authenticated!');
-            console.log('username:' + keycloak.username);
-            console.log('token:' + keycloak.token);
+            // console.log('username:' + keycloak.username);
+            // console.log('token:' + keycloak.token);
 
-        })
-        .error(
-            function(){
-                console.log('tilt')
-            });
+    })
+    .error(
+        function(){
+            console.log('tilt')
+    });
 
-	$(".successarea").hide();
+    console.log("Hiding areasa...");
+    console.log("failurearea:", $(".failurearea"));
+    
+    $(".failurearea").hide();
+    $(".successarea").hide();
 
+    console.log("Areas hidden");
+    console.log("failurearea:", $(".failurearea"));
+
+    
     $("#send").on("click", function() {
 	
 		var data = {
@@ -42,7 +51,10 @@ $(document).ready(function() {
 				$("form").hide();
 			},
 			error:function(error) {
-				console.log("Etwas hat beim hinzufügen nicht geklappt!:");
+                console.log("Etwas hat beim hinzufügen nicht geklappt!:", error);
+
+                $(".failurearea").show();
+				$("form").hide();
 			}
 		});
 	});
