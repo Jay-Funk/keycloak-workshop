@@ -15,9 +15,10 @@ public class SpringMailClient implements GuestbookMailClient {
     }
 
     @Override
-    public void sendMail(GuestbookEntry entry) {
+    public boolean sendMail(GuestbookEntry entry) {
         String endpoint = "http://localhost:8082/mail";
         Boolean result = template.postForObject(endpoint, entry, Boolean.class);
         System.out.println("Mail sent: " + result.toString());
+        return result;
     }
 }
