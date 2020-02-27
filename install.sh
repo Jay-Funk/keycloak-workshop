@@ -30,7 +30,7 @@ if [[ ! -d "${KEYCLOAK_PATH}" ]]; then
     unzip -q ${KEYCLOAK_PATH}.zip
 
     printf "Removing ${KEYCLOAK_PATH}.zip ...\n"
-    rm -rf ${KEYCLOAK_PATH}.zip
+    # rm -rf ${KEYCLOAK_PATH}.zip
 
     EXISTS="false"
 fi
