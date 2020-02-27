@@ -6,6 +6,7 @@ import java.util.List;
 import de.codecentric.demo.guestbook.domain.GuestbookEntry;
 import de.codecentric.demo.guestbook.domain.GuestbookMailService;
 import de.codecentric.demo.guestbook.domain.GuestbookRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +37,8 @@ public class GuestbookController {
 			produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<?> create(@RequestBody GuestbookEntry entry) {
 		entry = repository.save(entry);
-        mailService.sendMail(entry);
+        boolean sendSuccessful = mailService.sendMail(entry);
+		if (!sendSuccessful) return new ResponseEntity(HttpStatus.FORBIDDEN);
 		return ResponseEntity.ok(entry);
 	}
 }

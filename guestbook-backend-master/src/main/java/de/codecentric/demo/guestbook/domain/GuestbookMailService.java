@@ -14,7 +14,7 @@ public class GuestbookMailService {
 	}
 
 	@Async
-	public void sendMail(final GuestbookEntry entry) {
+	public boolean sendMail(final GuestbookEntry entry) {
 
 		System.out.println("Sending Mail...");
 		try {
@@ -27,7 +27,9 @@ public class GuestbookMailService {
 			} else {
 				System.out.println("ERROR sending mail: " + e.getLocalizedMessage());
 			}
+			return false;
 		}
+		return true;
 
 	}
 }
